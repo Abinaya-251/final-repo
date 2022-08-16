@@ -70,8 +70,7 @@ jobs:
         - uses: azure/k8s-deploy@v1
           with:
            manifests: |
-             aks/deployment.yaml
-             aks/service.yaml
+             deploy.yaml
            images: |
              ${{ env.REGISTRY_NAME }}.azurecr.io/myimage:latest
              imagePullPolicy: Always
