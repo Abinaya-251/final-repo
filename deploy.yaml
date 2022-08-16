@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sampleapp-image-deployment
+  name: sample-image-deployment
   labels:
-    app: sampleapp-image
+    app: sample-image
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: sampleapp-image
+      app: sample-image
   template:
     metadata:
       labels:
-        app: sampleapp-image
+        app: sample-image
     spec:
       containers:
-      - name: sampleapp-image-cont
+      - name: sample-image-cont
         image: abinaya.azurecr.io/sampleapp:latest
         imagePullPolicy: Always
         ports:
@@ -27,7 +27,7 @@ metadata:
   name: sampleapp-image-service
 spec:
   selector:
-    app: sampleapp-image
+    app: sample-image
   ports:
     - protocol: TCP
       port: 3000
