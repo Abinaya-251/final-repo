@@ -29,7 +29,6 @@ jobs:
          run: npm --version
        - run: npm ci
        - run: npm run build --if-present
-       - run: npm run test:staging
     deploy:
         runs-on: ubuntu-latest
         steps:
