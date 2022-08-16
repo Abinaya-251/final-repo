@@ -1,5 +1,9 @@
-on: [push]
-name: build to acr and deploy to aks
+name: AZURE-DEPLOY
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 env:
   REGISTRY_NAME: abinaya
   CLUSTER_NAME: MY_KUBE_CLUSTER
@@ -7,7 +11,26 @@ env:
   NAMESPACE: default
 
 jobs:
-    build-and-deploy:
+    build:
+      runs-on: ubuntu-latest
+      strategy:
+        matrix:
+          node-version: [16.x]
+
+      steps:
+       - uses: actions/checkout@v2
+       - name: Use Node.js ${{ matrix.node-version }}
+         uses: actions/setup-node@v1
+         with:
+           node-version: ${{ matrix.node-version }}
+       - name: Ckeck node version
+         run: node --version
+       - name: Check npm version
+         run: npm --version
+       - run: npm ci
+       - run: npm run build --if-present
+       - run: npm run test:staging
+    deploy:
         runs-on: ubuntu-latest
         steps:
         # checkout the repo
