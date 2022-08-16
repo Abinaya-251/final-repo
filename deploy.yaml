@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: sample-image-cont
-        image: abinaya.azurecr.io/sampleapp:latest
+        image: abinaya.azurecr.io/sample:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
