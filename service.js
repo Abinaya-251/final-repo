@@ -2,7 +2,7 @@
 const express = require('express');
 // Constants
 const PORT = 49160;
-const HOST = 0.0.0.0;
+const HOST = '0.0.0.0';
 const app = express();
 app.get('/', (req, res) => {
   res.send('<h2>Docker and Nodejs appdemo <h2>');
