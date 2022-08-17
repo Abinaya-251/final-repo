@@ -19,7 +19,7 @@ spec:
         image: abinaya.azurecr.io/sample:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 8080
+        - containerPort: 3000
 ---
 apiVersion: v1
 kind: Service
